@@ -1,0 +1,21 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "- `app.js` 项目的启动入口\r - `controller` 控制器模块\r - `service` 和服务器交互的模块\r - `view` 视图文件\r - `config` 配置文件\r - `router` 路由文件\r - `public` 客户端用到的静态资源 css,图片\r - `utile` 工具模块\r - `vendor` 第三方工具包",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "nunjucks": "^3.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
