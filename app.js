@@ -1,12 +1,27 @@
+const session = require('express-session') // 在express中使用cookie和session
+
 const express = require('express')
 
+const cookieParser = require('cookie-parser')
+
 const nunjucks = require('nunjucks')
+
+const rememberMe = require('./middleware/remember-me')
 
 const path = require('path')
 
 const app = express()
 
 const router = require('./router/index')
+// 配置解析 cookie 的中间件
+app.use(cookieParser())
+
+// 配置 session 中间件
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // 开放public资源
 app.use('/public/', express.static(path.join(__dirname, './public/')))
@@ -25,6 +40,8 @@ app.use(
     extended: true
   })
 )
+
+app.use(rememberMe)
 
 // nunjucks默认去view找视图文件 渲染页面
 nunjucks.configure(path.join(__dirname, './view/'), {

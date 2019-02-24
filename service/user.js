@@ -1,16 +1,7 @@
 const request = require('../utils/request')
 
-exports.findByNickname = async nickname => {
-  return await request({
-    url: '/users',
-    params: {
-      nickname
-    }
-  })
-}
-
-exports.findByUsername = async username => {
-  return await request({
+exports.findByUsername = username => {
+  return request({
     url: '/users',
     params: {
       username
@@ -18,8 +9,17 @@ exports.findByUsername = async username => {
   })
 }
 
-exports.createUser = async data => {
-  return await request({
+exports.findByNickname = nickname => {
+  return request({
+    url: '/users',
+    params: {
+      nickname
+    }
+  })
+}
+
+exports.createUser = data => {
+  return request({
     url: '/users',
     method: 'POST',
     data: {
